@@ -7,7 +7,7 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class Array_Test {
+public class DVD_manager {
     public static class DVD {
         public String name;
         public int releaseYear;
@@ -60,7 +60,7 @@ public class Array_Test {
                         System.out.print("Input numbers of dvd you want to store : ");
                         int number_of_dvd = sc.nextInt();
                         sc.nextLine();
-                        DVD[] BoxSet = new DVD[number_of_dvd]; // Move BoxSet declaration and initialization here
+                        DVD_manager[] BoxSet = new DVD_manager[number_of_dvd]; // Move BoxSet declaration and initialization here
                         int i = 0;
                         while (i < number_of_dvd) {
                             System.out.print("Title of #" + (i + 1) + " DVD : ");
@@ -70,10 +70,10 @@ public class Array_Test {
                             System.out.print("Publish year of #" + (i + 1) + " DVD : ");
                             int releaseYear = sc.nextInt();
                             sc.nextLine();
-                            BoxSet[i] = new DVD(name, releaseYear, director);
+                            BoxSet[i] = new DVD_manager(name, releaseYear, director);
                             i++;
                         }
-                        for (DVD dvd : BoxSet) {
+                        for (DVD_manager dvd : BoxSet) {
                             file.write(dvd.toString() + "\n");
                         }
                     } catch (IOException e) {
