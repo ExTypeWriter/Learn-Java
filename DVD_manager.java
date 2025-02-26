@@ -25,10 +25,9 @@ public class DVD_manager {
             return formatter.format(date) + " " + this.name + ", directed by " + this.director + ", released in "
                     + this.releaseYear;
         }
-
     }
 
-    public static void main(String[] agrs) {
+    public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         boolean end_of_program = false;
         while (end_of_program == false) {
@@ -47,7 +46,6 @@ public class DVD_manager {
                     try {
                         TimeUnit.SECONDS.sleep(3);
                     } catch (InterruptedException e) {
-                        // Handle the exception here (e.g., print an error message)
                         e.printStackTrace();
                     }
                     System.out.print("\033[H\033[2J");  
@@ -60,7 +58,7 @@ public class DVD_manager {
                         System.out.print("Input numbers of dvd you want to store : ");
                         int number_of_dvd = sc.nextInt();
                         sc.nextLine();
-                        DVD_manager[] BoxSet = new DVD_manager[number_of_dvd]; // Move BoxSet declaration and initialization here
+                        DVD[] BoxSet = new DVD[number_of_dvd]; // Changed from DVD_manager[] to DVD[]
                         int i = 0;
                         while (i < number_of_dvd) {
                             System.out.print("Title of #" + (i + 1) + " DVD : ");
@@ -70,10 +68,10 @@ public class DVD_manager {
                             System.out.print("Publish year of #" + (i + 1) + " DVD : ");
                             int releaseYear = sc.nextInt();
                             sc.nextLine();
-                            BoxSet[i] = new DVD_manager(name, releaseYear, director);
+                            BoxSet[i] = new DVD(name, releaseYear, director); // Changed from DVD_manager to DVD
                             i++;
                         }
-                        for (DVD_manager dvd : BoxSet) {
+                        for (DVD dvd : BoxSet) { // Changed from DVD_manager to DVD
                             file.write(dvd.toString() + "\n");
                         }
                     } catch (IOException e) {
@@ -108,6 +106,7 @@ public class DVD_manager {
                         System.out.println("An error occurred.");
                         e.printStackTrace();
                     }
+                    break; 
             }
         }
         sc.close();
